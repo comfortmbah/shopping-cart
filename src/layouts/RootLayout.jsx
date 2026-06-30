@@ -6,9 +6,9 @@ const RootLayout = () => {
   const [cart, setCart] = useState([]);
 
   return (
-    <div>
+    <div className='min-h-screen bg-slate-100'>
       <Navbar />
-      <main>
+      <main className='max-w-7xl mx-auto px-4 py-8'>
         <Outlet context={{ cart, setCart }} />
       </main>
     </div>
