@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar';
 import { Outlet } from 'react-router-dom'
-import { jsxs } from 'react/jsx-runtime';
+
 
 const RootLayout = () => {
   const [cart, setCart] = useState(() => {
