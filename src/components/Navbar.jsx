@@ -38,7 +38,7 @@ const Navbar = ({ cart }) => {
               : 'text-gray-700 hover:text-blue-600 transition'
             }
           >
-            Cart
+            Cart {totalItems}
           </NavLink>
         </div>
       </nav>
