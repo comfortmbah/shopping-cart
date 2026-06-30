@@ -1,11 +1,27 @@
 import { useState } from "react"
-
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
+import Home from "./pages/Home";
+import Cart from "./pages/Cart"
+import Shop from "./pages/Shop";
+import RootLayout from "./layouts/RootLayout"
 
 const App = () => {
   const [cart, setCart] = useState([]);
-  return (
-    <div className="text-4xl font-bold underline text-red-500">App</div>
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route
+        path="/"
+        element={<RootLayout  />}
+      >
+        <Route index element={<Home />} />
+        <Route path="shop" element={<Shop />} />
+        <Route path="cart" element={<Cart />} />
+      </Route>
+    )
   )
+
+  return <RouterProvider router={router} />
 }
 
 export default App
