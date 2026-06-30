@@ -1,4 +1,4 @@
-import { useState } from "react"
+
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import Home from "./pages/Home";
 import Cart from "./pages/Cart"
@@ -6,13 +6,12 @@ import Shop from "./pages/Shop";
 import RootLayout from "./layouts/RootLayout"
 
 const App = () => {
-  const [cart, setCart] = useState([]);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route
         path="/"
-        element={<RootLayout  />}
+        element={<RootLayout />}
       >
         <Route index element={<Home />} />
         <Route path="shop" element={<Shop />} />
