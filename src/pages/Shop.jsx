@@ -11,7 +11,18 @@ const Shop = () => {
   if (error) return <Error message={error} />;
 
   return (
-    <div>Shop</div>
+    <section className='max-w-7xl mx-auto px-4 py-10'>
+      <h1 className='mb-2 text-4xl font-bold text-slate-800'>
+        Shop Products
+      </h1>
+      <p className='mb-8 text-slate-600'>
+        Browse our collection and add your favorite products to the cart.
+      </p>
+
+      <div>
+        
+      </div>
+    </section>
   )
 }
 
