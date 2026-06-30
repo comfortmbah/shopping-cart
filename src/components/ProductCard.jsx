@@ -12,6 +12,13 @@ const ProductCard = ({ product, cart, setCart }) => {
   function increaseQuantity() {
     setQuantity(quantity + 1)
   }
+
+  function handleInputChange(e) {
+    const value = Number(e.target.value);
+    if (value >= 1) {
+      setQuantity(value);
+    }
+  }
   return (
     <div>ProductCard</div>
   )
