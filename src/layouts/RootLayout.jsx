@@ -1,10 +1,13 @@
 import { useState } from 'react'
+import Navbar from '../components/Navbar';
 
 const RootLayout = () => {
   const [cart, setCart] = useState([]);
-  
+
   return (
-    <div>RootLayout</div>
+    <div>
+      <Navbar />
+    </div>
   )
 }
 
