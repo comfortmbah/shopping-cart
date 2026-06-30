@@ -1,6 +1,8 @@
 import { useState } from "react"
 
+
 const App = () => {
+  const [cart, setCart] = useState([]);
   return (
     <div className="text-4xl font-bold underline text-red-500">App</div>
   )
