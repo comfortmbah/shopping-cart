@@ -1,6 +1,6 @@
-import React from 'react'
+import { NavLink } from "react-router-dom"
 
-const Navbar = () => {
+const Navbar = ({ cart }) => {
   return (
     <div>Navbar</div>
   )
