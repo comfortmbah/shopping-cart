@@ -4,6 +4,7 @@ import UseFetchProducts from '../hooks/UseFetchProducts'
 import { useOutletContext } from 'react-router-dom'
 
 const Shop = () => {
+  const { cart, setCart } = useOutletContext();
   return (
     <div>Shop</div>
   )
