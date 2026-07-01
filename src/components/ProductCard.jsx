@@ -95,7 +95,10 @@ ProductCard.propTypes = {
     price: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired
   }).isRequired,
-  cart: PropTypes.array.isRequired,
+  cart: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    quantity: PropTypes.number.isRequired
+  })).isRequired,
   setCart: PropTypes.func.isRequired
 };
 
