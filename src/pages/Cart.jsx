@@ -54,15 +54,15 @@ const Cart = () => {
         {cart.map((item) => (
           <div
             key={item.id}
-            className="flex flex-col gap-6 rounded-xl bg-white p-6 shadow-md md:flex-row md:items-center"
+            className="flex flex-col gap-6 rounded-xl bg-white p-6 shadow-md md:flex-row md:items-center md:text-left"
           >
             <img 
               src={item.image} 
               alt={item.title}
-              className="h-32 w-32 object-contain" 
+              className="h-32 w-32 object-contain mx-auto md:mx-0" 
             />
 
-            <div className="flex-1">
+            <div className="flex-1 text-center md:text-left">
               <h2 className="text-lg font-semibold">
                 {item.title}
               </h2>
@@ -72,7 +72,7 @@ const Cart = () => {
               </p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 justify-center">
               <button
                 onClick={() => decreaseQuantity(item.id)}
                 className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600"
