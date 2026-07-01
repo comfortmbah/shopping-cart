@@ -45,9 +45,73 @@ const Cart = () => {
   }
 
   return (
-    <div>
+    <section className="mx-auto max-w-6xl px-4 py-10">
+      <h1 className="mb-8 text-4xl font-bold text-slate-800">
+        Shopping Cart
+      </h1>
 
-    </div>
+      <div className="space-y-6">
+        {cart.map((item) => (
+          <div
+            key={item.id}
+            className="flex flex-col gap-6 rounded-xl bg-white p-6 shadow-md md:flex-row md:items-center"
+          >
+            <img 
+              src={item.image} 
+              alt={item.title}
+              className="h-32 w-32 object-contain" 
+            />
+
+            <div className="flex-1">
+              <h2 className="text-lg font-semibold">
+                {item.title}
+              </h2>
+
+              <p className="mt-2 text-blue-600 font-bold">
+                ${item.price}
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => decreaseQuantity(item.id)}
+                className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600"
+              >
+                -
+              </button>
+
+              <span className="text-xl font-semibold">
+                {item.quantity}
+              </span>
+
+              <button
+                onClick={() => increaseQuantity(item.id)}
+                className="rounded bg-green-500 px-2 py-2 text-white hover:bg-green-600"
+              >
+                +
+              </button>
+            </div>
+
+            <button
+              onClick={() => removeItem(item.id)}
+              className="rounded bg-slate-800 px-4 py-2 text-white hover:text-slate-900"
+            >
+              Remove
+            </button>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-10 rounded-xl bg-slate-100 p-6">
+        <h2 className="text-2xl font-bold">
+          Total Items: {totalItem}
+        </h2>
+
+        <h2 className="mt-3 text-2xl font-bold">
+          Total Price: ${totalPrice.toFixed(2)}
+        </h2>
+      </div>
+    </section>
   )
 } 
 
