@@ -47,4 +47,11 @@ const Navbar = ({ cart }) => {
   )
 }
 
+Navbar.propTypes = {
+  cart: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    quantity: PropTypes.number.isRequired,
+  })).isRequired
+};
+
 export default Navbar
