@@ -88,4 +88,15 @@ const ProductCard = ({ product, cart, setCart }) => {
   );
 }
 
+ProductCard.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired
+  }).isRequired,
+  cart: PropTypes.array.isRequired,
+  setCart: PropTypes.func.isRequired
+};
+
 export default ProductCard
