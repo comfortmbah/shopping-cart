@@ -27,6 +27,9 @@ const Cart = () => {
     const updatedCart = cart.filter((item) => item.id !== id);
     setCart(updatedCart);
   }
+
+  const totalItem = cart.reduce((total, item) => total + item.quantity, 0);
+  
   return (
     <div>
 
