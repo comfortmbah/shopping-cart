@@ -1,4 +1,5 @@
 import { useState } from "react"
+import PropTypes from "prop-types"
 
 const ProductCard = ({ product, cart, setCart }) => {
   const [quantity, setQuantity] = useState(1);
