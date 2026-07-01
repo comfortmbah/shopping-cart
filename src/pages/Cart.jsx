@@ -12,6 +12,16 @@ const Cart = () => {
 
     setCart(updatedCart);
   }
+
+  function decreaseQuantity(id) {
+    const updatedCart = cart.map((item) => {
+      return item.id === id
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
+    }).filter((item) => item.quantity > 0)
+
+    setCart(updatedCart);
+  }
   return (
     <div>
 
