@@ -1,4 +1,4 @@
-import { useOutletContext } from "react-router-dom"
+import { Link, useOutletContext } from "react-router-dom"
 
 const Cart = () => {
   const { cart, setCart } = useOutletContext();
@@ -53,9 +53,17 @@ const Cart = () => {
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-10">
-      <h1 className="mb-8 text-4xl font-bold text-slate-800">
-        Shopping Cart
-      </h1>
+      <div className="mb-3 flex flex-col items-center justify-between md:flex-row">
+        <h1 className="mb-8 text-4xl font-bold text-slate-800">
+          Shopping Cart
+        </h1>
+
+        <Link to="/shop" 
+          className="mt-3 mb-4 inline-block rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700"
+        >
+          Continue Shopping
+        </Link>
+      </div>
 
       <div className="space-y-6">
         {cart.map((item) => (
