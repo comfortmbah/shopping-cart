@@ -120,7 +120,12 @@ const Cart = () => {
           Total Price: ${totalPrice.toFixed(2)}
         </h2>
 
-        
+        <button
+          onClick={clearCart}
+          className="mt-6 rounded-lg px-6 py-3 font-semibold text-white transition bg-red-600 hover:bg-red-700"
+        >
+          Clear Cart
+        </button> 
       </div>
     </section>
   )
