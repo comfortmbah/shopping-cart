@@ -119,23 +119,42 @@ const Cart = () => {
         ))}
       </div>
 
-      <div className="mt-10 rounded-xl bg-slate-100 p-6">
-        <h2 className="text-2xl font-bold">
-          Total Items: {totalItem}
+      <div className="mt-10 rounded-xl bg-slate-100 p-6 shadow-md w-1/3">
+        <h2 className="mb-6 text-2xl font-bold text-slate-800">
+          Cart Summary
         </h2>
 
-        <h2 className="mt-3 text-2xl font-bold">
-          Total Price: ${totalPrice.toFixed(2)}
-        </h2>
+        <div className="space-y-4">
+          <div className="flex gap-10">
+            <span>Total Items</span>
+            <span>{totalItem}</span>
+          </div>
+
+          <div className="flex gap-10">
+            <span>Subtotal</span>
+            <span>${totalPrice.toFixed(2)}</span>
+          </div>
+
+          <div className="flex gap-10">
+            <span>Shipping</span>
+            <span className="text-green-600 font-semibold">Free</span>
+          </div>
+
+          <hr />
+
+          <div className="flex gap-10 font-bold">
+            <span>Total</span>
+            <span>${totalPrice.toFixed(2)}</span>
+          </div>
+        </div>
 
         <button
           onClick={clearCart}
-          disabled={cart.length === 0}
-          className="mt-6 rounded-lg px-6 py-3 font-semibold text-white transition bg-red-600 hover:bg-red-700
-            disabled:cursor-not-allowed disabled:bg-gray-400"
+          className="mt-6 w-1/2 rounded-lg bg-red-600 py-3 font-semibold text-white
+            transition hover:bg-red-700"
         >
           Clear Cart
-        </button> 
+        </button>
       </div>
     </section>
   )
