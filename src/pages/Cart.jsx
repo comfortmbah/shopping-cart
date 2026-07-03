@@ -18,7 +18,7 @@ const Cart = () => {
       return item.id === id
         ? { ...item, quantity: item.quantity - 1 }
         : item
-    }).filter((item) => item.quantity > 0)
+    })
 
     setCart(updatedCart);
   }
@@ -75,7 +75,9 @@ const Cart = () => {
             <div className="flex items-center gap-3 justify-center">
               <button
                 onClick={() => decreaseQuantity(item.id)}
-                className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600"
+                disabled={item.quantity === 1}
+                className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600
+                  disabled:bg-red-300"
               >
                 -
               </button>
