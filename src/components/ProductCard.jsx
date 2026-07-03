@@ -1,7 +1,7 @@
 import { useState } from "react"
 import PropTypes from "prop-types"
 
-const ProductCard = ({ product, cart, setCart }) => {
+const ProductCard = ({ product, cart, setCart, showSuccessMessage }) => {
   const [quantity, setQuantity] = useState(1);
 
   function decreaseQuantity() {
@@ -30,6 +30,7 @@ const ProductCard = ({ product, cart, setCart }) => {
           : item
       });
       setCart(updatedCart);
+      showSuccessMessage();
     } else {
       setCart([ ...cart, { ...product, quantity }])
     }
@@ -99,7 +100,8 @@ ProductCard.propTypes = {
     id: PropTypes.number.isRequired,
     quantity: PropTypes.number.isRequired
   })).isRequired,
-  setCart: PropTypes.func.isRequired
+  setCart: PropTypes.func.isRequired,
+  showSuccessMessage: PropTypes.func.isRequired
 };
 
 export default ProductCard
