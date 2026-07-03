@@ -69,7 +69,8 @@ const Cart = () => {
         {cart.map((item) => (
           <div
             key={item.id}
-            className="flex flex-col gap-6 rounded-xl bg-white p-6 shadow-md md:flex-row md:items-center md:text-left"
+            className="flex flex-col gap-6 rounded-xl bg-white p-6 shadow-md md:flex-row md:items-center md:text-left
+              transition duration-300 hover:scale-101 hover:shadow-xl"
           >
             <img 
               src={item.image} 
