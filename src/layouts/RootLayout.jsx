@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar';
 import { Outlet } from 'react-router-dom'
+import Footer from '../components/Footer';
 
 
 const RootLayout = () => {
@@ -19,6 +20,7 @@ const RootLayout = () => {
       <main className='max-w-7xl mx-auto px-4 py-8'>
         <Outlet context={{ cart, setCart }} />
       </main>
+      <Footer />
     </div>
   )
 }
