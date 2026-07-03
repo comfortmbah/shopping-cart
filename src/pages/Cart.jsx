@@ -122,7 +122,9 @@ const Cart = () => {
 
         <button
           onClick={clearCart}
-          className="mt-6 rounded-lg px-6 py-3 font-semibold text-white transition bg-red-600 hover:bg-red-700"
+          disabled={cart.length === 0}
+          className="mt-6 rounded-lg px-6 py-3 font-semibold text-white transition bg-red-600 hover:bg-red-700
+            disabled:cursor-not-allowed disabled:bg-gray-400"
         >
           Clear Cart
         </button> 
