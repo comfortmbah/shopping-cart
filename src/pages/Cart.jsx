@@ -40,13 +40,20 @@ const Cart = () => {
 
   if (cart.length === 0) {
     return (
-      <section className="flex min-h-[70vh] flex-col items-center justify-center">
-        <h1 className="text-4xl font-bold text-slate-800">
+      <section className="flex min-h-[70vh] flex-col items-center justify-center px-6 text-center">
+        <h2 className="text-3xl font-bold text-slate-800">
           Your Cart is Empty
-        </h1>
-        <p className="mt-4 text-slate-400">
+        </h2>
+        <p className="mt-3 text-gray-600 max-w-md">
           Add some products from the shop
         </p>
+
+        <Link
+          to={'/shop'}
+          className="mt-8 rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700"
+        >
+          Start Shopping
+        </Link>
       </section>
     )
   }
