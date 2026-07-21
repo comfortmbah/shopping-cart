@@ -9,7 +9,8 @@ const Shop = () => {
   const { cart, setCart } = useOutletContext();
   const { products, loading, error } = UseFetchProducts();
   const [showMessage, setShowMessage] = useState(false);
-  const [sortOption, setSortOption] = useState("default")
+  const [sortOption, setSortOption] = useState("default");
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   function showSuccessMessage() {
     setShowMessage(true);
@@ -19,7 +20,15 @@ const Shop = () => {
     }, 2000);
   }
 
-  const sortedProducts = [...products];
+  const categories = [
+    "all", ...new Set(products.map((product) => product.category))
+  ];
+
+  const filteredProducts = selectedCategory === "all" 
+    ? products
+    : products.filter((product) => product.category === selectedCategory);
+
+  const sortedProducts = [...filteredProducts];
 
   if (sortOption === "low-high") {
     sortedProducts.sort((a, b) => a.price - b.price);
@@ -51,32 +60,61 @@ const Shop = () => {
         </div>
       )}
 
-      <div className='mb-6 flex items-center gap-3'>
-        <label 
-          htmlFor="sort"
-          className='font-semibold text-gray-700'
-        >
-          Sort by:
-        </label>
+      <div className='mb-6 flex flex-col gap-4 md:flex-row md:items-center'>
+        <div className='flex items-center gap-3'>
+          <label 
+            htmlFor="sort"
+            className='font-semibold text-gray-700'
+          >
+            Sort by:
+          </label>
 
-        <select
-          id='sort'
-          value={sortOption}
-          onChange={(e) => setSortOption(e.target.value)}
-          className='rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none'
-        >
-          <option value="default">Default</option>
-          <option value="low-high">
-            Price: Low to High
-          </option>
-          <option value="high-low">
-            Price: High to Low
-          </option>
-          <option value="title">
-            Title: A-Z
-          </option>
-        </select>
+          <select
+            id='sort'
+            value={sortOption}
+            onChange={(e) => setSortOption(e.target.value)}
+            className='rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none'
+          >
+            <option value="default">Default</option>
+            <option value="low-high">
+              Price: Low to High
+            </option>
+            <option value="high-low">
+              Price: High to Low
+            </option>
+            <option value="title">
+              Title: A-Z
+            </option>
+          </select>
+        </div>
+
+        <div className='flex items-center gap-3'>
+          <label 
+            htmlFor="category"
+            className='font-semibold text-gray-700'
+          >
+            Category:
+          </label>
+
+          <select
+            id='category'
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className='rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none'
+          >
+            {categories.map((category) => (
+              <option
+                key={category}
+                value={category}
+              >
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
+
+      
 
       <p className='mb-6 text-lg font-medium text-gray-700'>
         Showing {sortedProducts.length} products
