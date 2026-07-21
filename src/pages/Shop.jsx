@@ -9,6 +9,7 @@ const Shop = () => {
   const { cart, setCart } = useOutletContext();
   const { products, loading, error } = UseFetchProducts();
   const [showMessage, setShowMessage] = useState(false);
+  const [sortOption, setSortOption] = useState("default")
 
   function showSuccessMessage() {
     setShowMessage(true);
@@ -16,6 +17,20 @@ const Shop = () => {
     setTimeout(() => {
       setShowMessage(false);
     }, 2000);
+  }
+
+  const sortedProducts = [...products];
+
+  if (sortOption === "low-high") {
+    sortedProducts.sort((a, b) => a.price - b.price);
+  }
+
+  if (sortOption === "high-low") {
+    sortedProducts.sort((a, b) => b.price - a.price);
+  }
+
+  if (sortOption === "title") {
+    sortedProducts.sort((a, b) => a.title.localeCompare(b.title));
   }
 
   if (loading) return <Loading />;
@@ -36,8 +51,39 @@ const Shop = () => {
         </div>
       )}
 
+      <div className='mb-6 flex items-center gap-3'>
+        <label 
+          htmlFor="sort"
+          className='font-semibold text-gray-700'
+        >
+          Sort by:
+        </label>
+
+        <select
+          id='sort'
+          value={sortOption}
+          onChange={(e) => setSortOption(e.target.value)}
+          className='rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none'
+        >
+          <option value="default">Default</option>
+          <option value="low-high">
+            Price: Low to High
+          </option>
+          <option value="high-low">
+            Price: High to Low
+          </option>
+          <option value="title">
+            Title: A-Z
+          </option>
+        </select>
+      </div>
+
+      <p className='mb-6 text-lg font-medium text-gray-700'>
+        Showing {sortedProducts.length} products
+      </p>
+
       <div className='grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-        {products.map((product) => (
+        {sortedProducts.map((product) => (
           <ProductCard
             key={product.id}
             product={product}
