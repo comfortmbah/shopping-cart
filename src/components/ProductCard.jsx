@@ -1,5 +1,6 @@
 import { useState } from "react"
 import PropTypes from "prop-types"
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product, cart, setCart, showSuccessMessage }) => {
   const [quantity, setQuantity] = useState(1);
@@ -80,11 +81,19 @@ const ProductCard = ({ product, cart, setCart, showSuccessMessage }) => {
       </div>
 
       <button
-          onClick={addToCart}
-          className="mt-6 rounded-lg bg-blue-600 py-3 font-semibold text-white transition hover:bg-blue-700"
-        >
-          Add To Cart
-        </button>
+        onClick={addToCart}
+        className="mt-6 rounded-lg bg-blue-600 py-3 font-semibold text-white transition hover:bg-blue-700"
+      >
+        Add To Cart
+      </button>
+
+      <Link
+        to={`/product/${product.id}`}
+        className="mt-3 block rounded-lg border border-blue-600 px-4 py-2 text-center font-semibold
+          text-blue-600 transition hover:bg-blue-600 hover:text-white"
+      >
+        View Details
+      </Link>
     </div>
   );
 }
