@@ -2,8 +2,10 @@ import { useState } from "react"
 import PropTypes from "prop-types"
 import { Link } from "react-router-dom";
 
+
 const ProductCard = ({ product, cart, setCart, showSuccessMessage }) => {
   const [quantity, setQuantity] = useState(1);
+  
 
   function decreaseQuantity() {
     if (quantity > 1) {
@@ -81,7 +83,7 @@ const ProductCard = ({ product, cart, setCart, showSuccessMessage }) => {
       </div>
 
       <button
-        onClick={addToCart}
+        onClick={() => addToCart(product)}
         className="mt-6 rounded-lg bg-blue-600 py-3 font-semibold text-white transition hover:bg-blue-700"
       >
         Add To Cart

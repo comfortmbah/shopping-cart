@@ -3,7 +3,6 @@ import UseFetchProducts from "../hooks/UseFetchProducts"
 import Loading from "../components/Loading"
 import Error from "../components/Error"
 
-
 const ProductDetails = () => {
   const { id } = useParams();
   const { products, loading, error } = UseFetchProducts();
