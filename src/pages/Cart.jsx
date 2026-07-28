@@ -1,7 +1,8 @@
-import { Link, useOutletContext } from "react-router-dom"
+import { Link } from "react-router-dom"
+import { useCart } from "../context/CartContext";
 
 const Cart = () => {
-  const { cart, setCart } = useOutletContext();
+  const { cart, setCart } = useCart();
 
   function increaseQuantity(id) {
     const updatedCart = cart.map((item) => {
