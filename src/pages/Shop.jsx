@@ -1,12 +1,10 @@
 import  Loading  from '../components/Loading'
 import  Error  from '../components/Error'
 import UseFetchProducts from '../hooks/UseFetchProducts'
-import { useOutletContext } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import { useState } from 'react'
 
 const Shop = () => {
-  const { cart, setCart } = useOutletContext();
   const { products, loading, error } = UseFetchProducts();
   const [showMessage, setShowMessage] = useState(false);
   const [sortOption, setSortOption] = useState("default");
@@ -125,8 +123,6 @@ const Shop = () => {
           <ProductCard
             key={product.id}
             product={product}
-            cart={cart}
-            setCart={setCart}
             showSuccessMessage={showSuccessMessage}
           />
         ))}
