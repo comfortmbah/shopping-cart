@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom"
-import PropTypes from "prop-types"
 import { useCart } from "../context/CartContext";
 
 const Navbar = () => {
@@ -48,12 +47,5 @@ const Navbar = () => {
     </header>
   )
 }
-
-Navbar.propTypes = {
-  cart: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    quantity: PropTypes.number.isRequired,
-  })).isRequired
-};
 
 export default Navbar
