@@ -1,9 +1,11 @@
 import { useState } from "react"
 import PropTypes from "prop-types"
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 
-const ProductCard = ({ product, cart, setCart, showSuccessMessage }) => {
+const ProductCard = ({ product, showSuccessMessage }) => {
+  const { cart, setCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   
 
@@ -107,11 +109,6 @@ ProductCard.propTypes = {
     price: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired
   }).isRequired,
-  cart: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    quantity: PropTypes.number.isRequired
-  })).isRequired,
-  setCart: PropTypes.func.isRequired,
   showSuccessMessage: PropTypes.func.isRequired
 };
 
