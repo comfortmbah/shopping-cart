@@ -41,9 +41,18 @@ function CartProvider({ children }) {
       })
     }
 
+    function clearCart() {
+      const confirmClear = window.confirm("Are you sure you want to clear your cart?");
+      if (confirmClear) {
+        dispatch({
+          type: "CLEAR_CART",
+        })
+      }
+    }
+
     return (
         <CartContext.Provider
-          value={{ cart, addToCart, increaseQuantity, decreaseQuantity, removeItem }}
+          value={{ cart, addToCart, increaseQuantity, decreaseQuantity, removeItem, clearCart }}
         >
             {children}
         </CartContext.Provider>
