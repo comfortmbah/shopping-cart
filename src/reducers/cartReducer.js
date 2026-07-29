@@ -11,6 +11,12 @@ export function cartReducer(cart, action) {
         return [ ...cart, { ...action.payload, quantity: 1}]
       }
 
+      case "INCREASE_QUANTITY": {
+        return cart.map((item) => item.id === action.payload ? {
+          ...item, quantity: item.quantity + 1
+        } : item)
+      }
+
       default:
         return cart;
     }

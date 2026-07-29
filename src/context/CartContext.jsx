@@ -20,10 +20,16 @@ function CartProvider({ children }) {
       })
     }
 
+    function increaseQuantity(id) {
+      dispatch({
+        type: "INCREASE_QUANTITY",
+        payload: id,
+      })
+    }
 
     return (
         <CartContext.Provider
-          value={{ cart, addToCart }}
+          value={{ cart, addToCart, increaseQuantity }}
         >
             {children}
         </CartContext.Provider>
