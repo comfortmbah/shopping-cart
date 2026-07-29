@@ -2,14 +2,7 @@ import { Link } from "react-router-dom"
 import { useCart } from "../context/CartContext";
 
 const Cart = () => {
-  const { cart, increaseQuantity, decreaseQuantity, removeItem } = useCart();
-
-  function clearCart() {
-    const confirmClear = window.confirm("Are you sure you want to clear your cart?");
-    if (confirmClear) {
-      setCart([]);
-    }
-  }
+  const { cart, increaseQuantity, decreaseQuantity, removeItem, clearCart } = useCart();
 
   const totalItem = cart.reduce((total, item) => total + item.quantity, 0);
   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
