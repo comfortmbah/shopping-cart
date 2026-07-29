@@ -2,17 +2,7 @@ import { Link } from "react-router-dom"
 import { useCart } from "../context/CartContext";
 
 const Cart = () => {
-  const { cart, increaseQuantity } = useCart();
-
-  function decreaseQuantity(id) {
-    const updatedCart = cart.map((item) => {
-      return item.id === id
-        ? { ...item, quantity: item.quantity - 1 }
-        : item
-    })
-
-    setCart(updatedCart);
-  }
+  const { cart, increaseQuantity, decreaseQuantity } = useCart();
 
   function removeItem(id) {
     const updatedCart = cart.filter((item) => item.id !== id);
