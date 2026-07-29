@@ -23,6 +23,10 @@ export function cartReducer(cart, action) {
         } : item)
       }
 
+      case "REMOVE_ITEM": {
+        return cart.filter((item) => item.id !== action.payload)
+      }
+
       default:
         return cart;
     }
