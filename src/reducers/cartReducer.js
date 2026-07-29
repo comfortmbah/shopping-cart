@@ -19,7 +19,7 @@ export function cartReducer(cart, action) {
 
       case "DECREASE_QUANTITY": {
         return cart.map((item) => item.id === action.payload ? {
-          ...item, quantity: item.quantity - 1
+          ...item, quantity: Math.max(1, item.quantity - 1)
         } : item)
       }
 
