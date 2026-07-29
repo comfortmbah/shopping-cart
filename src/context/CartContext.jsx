@@ -27,9 +27,16 @@ function CartProvider({ children }) {
       })
     }
 
+    function decreaseQuantity(id) {
+      dispatch({
+        type: "DECREASE_QUANTITY",
+        payload: id,
+      })
+    }
+
     return (
         <CartContext.Provider
-          value={{ cart, addToCart, increaseQuantity }}
+          value={{ cart, addToCart, increaseQuantity, decreaseQuantity }}
         >
             {children}
         </CartContext.Provider>
