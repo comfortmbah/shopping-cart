@@ -34,9 +34,16 @@ function CartProvider({ children }) {
       })
     }
 
+    function removeItem(id) {
+      dispatch({
+        type: "REMOVE_ITEM",
+        payload: id,
+      })
+    }
+
     return (
         <CartContext.Provider
-          value={{ cart, addToCart, increaseQuantity, decreaseQuantity }}
+          value={{ cart, addToCart, increaseQuantity, decreaseQuantity, removeItem }}
         >
             {children}
         </CartContext.Provider>
