@@ -5,7 +5,7 @@ import { useCart } from "../context/CartContext";
 
 
 const ProductCard = ({ product, showSuccessMessage }) => {
-  const { cart, setCart } = useCart();
+  const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   
 
@@ -25,25 +25,12 @@ const ProductCard = ({ product, showSuccessMessage }) => {
       setQuantity(value);
     }
   }
-
-  function addToCart() {
-    const existingItem = cart.find((item) => item.id === product.id);
-    if (existingItem) {
-      const updatedCart = cart.map((item) => {
-        return item.id === product.id 
-          ? { ...item, quantity: item.quantity + quantity }
-          : item
-      });
-      setCart(updatedCart);
-      showSuccessMessage();
-    } else {
-      setCart([ ...cart, { ...product, quantity }])
-    }
-
-    setQuantity(1);
+  
+  function handleAddToCart() {
+    addToCart(product);
+    showSuccessMessage();
   }
 
-  
   return (
     <div className="flex flex-col rounded-xl bg-white p-5 shadow-lg transition hover:shadow-xl">
       <img 
@@ -85,7 +72,7 @@ const ProductCard = ({ product, showSuccessMessage }) => {
       </div>
 
       <button
-        onClick={() => addToCart(product)}
+        onClick={handleAddToCart}
         className="mt-6 rounded-lg bg-blue-600 py-3 font-semibold text-white transition hover:bg-blue-700"
       >
         Add To Cart

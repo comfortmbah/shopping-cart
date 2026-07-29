@@ -2,8 +2,10 @@ import { useParams } from "react-router-dom"
 import UseFetchProducts from "../hooks/UseFetchProducts"
 import Loading from "../components/Loading"
 import Error from "../components/Error"
+import { useCart } from "../context/CartContext"
 
 const ProductDetails = () => {
+  const { addToCart } = useCart();
   const { id } = useParams();
   const { products, loading, error } = UseFetchProducts();
 
@@ -45,6 +47,13 @@ const ProductDetails = () => {
                     {product.category}
                 </p>
             </div>
+
+            <button
+              onClick={() => addToCart(product)}
+              className="mt-6 rounded-lg bg-blue-600 py-3 font-semibold text-white transition hover:bg-blue-700"
+            >
+              Add To Cart
+            </button>
         </div>
     </div>
   )
