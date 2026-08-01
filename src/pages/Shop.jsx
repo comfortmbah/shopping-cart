@@ -13,8 +13,10 @@ const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   useEffect(() => {
-    searchInputRef.current.focus();
-  }, []);
+    if (!loading && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [loading]);
 
   function showSuccessMessage() {
     setShowMessage(true);
@@ -32,7 +34,12 @@ const Shop = () => {
     ? products
     : products.filter((product) => product.category === selectedCategory);
 
-  const sortedProducts = [...filteredProducts];
+  const searchedProducts = filteredProducts.filter((product) =>
+    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const sortedProducts = [...searchedProducts];
+
 
   if (sortOption === "low-high") {
     sortedProducts.sort((a, b) => a.price - b.price);
@@ -65,6 +72,24 @@ const Shop = () => {
       )}
 
       <div className='mb-6 flex flex-col gap-4 md:flex-row md:items-center'>
+        <div className='flex items-center gap-3'>
+          <label
+            htmlFor='search'
+            className='font-semibold text-gray-700'
+          >
+            Search: 
+          </label>
+
+          <input 
+            type="text" 
+            ref={searchInputRef}
+            placeholder='Search products...'
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className='rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none'
+          />
+        </div>
+
         <div className='flex items-center gap-3'>
           <label 
             htmlFor="sort"
