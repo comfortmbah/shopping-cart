@@ -3,6 +3,7 @@ import  Error  from '../components/Error'
 import UseFetchProducts from '../hooks/UseFetchProducts'
 import ProductCard from '../components/ProductCard'
 import { useState, useRef, useEffect } from 'react'
+import { MdClear } from 'react-icons'
 
 const Shop = () => {
   const searchInputRef = useRef(null);
@@ -24,6 +25,11 @@ const Shop = () => {
     setTimeout(() => {
       setShowMessage(false);
     }, 2000);
+  }
+
+  function clearSearch() {
+    setSearchTerm("");
+    searchInputRef.current.focus();
   }
 
   const categories = [
@@ -88,6 +94,16 @@ const Shop = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             className='rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none'
           />
+
+          {searchTerm && (
+            <button
+              onClick={clearSearch}
+              className='absolute right-3 top-1/2 -translate-y-0.5 text-gray-500 transition hover:text-gray-800'
+              aria-label='Clear search'
+            >
+              <MdClear size={20} />
+            </button>
+          )}
         </div>
 
         <div className='flex items-center gap-3'>
