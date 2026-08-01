@@ -3,7 +3,7 @@ import  Error  from '../components/Error'
 import UseFetchProducts from '../hooks/UseFetchProducts'
 import ProductCard from '../components/ProductCard'
 import { useState, useRef, useEffect } from 'react'
-import { MdClear } from 'react-icons'
+import { MdClear } from 'react-icons/md'
 
 const Shop = () => {
   const searchInputRef = useRef(null);
@@ -78,14 +78,14 @@ const Shop = () => {
       )}
 
       <div className='mb-6 flex flex-col gap-4 md:flex-row md:items-center'>
-        <div className='flex items-center gap-3'>
+        <div className='relative flex items-center gap-3'>
           <label
             htmlFor='search'
             className='font-semibold text-gray-700'
           >
             Search: 
           </label>
-
+          
           <input 
             type="text" 
             ref={searchInputRef}
@@ -98,7 +98,7 @@ const Shop = () => {
           {searchTerm && (
             <button
               onClick={clearSearch}
-              className='absolute right-3 top-1/2 -translate-y-0.5 text-gray-500 transition hover:text-gray-800'
+              className='absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 transition hover:text-gray-800'
               aria-label='Clear search'
             >
               <MdClear size={20} />
