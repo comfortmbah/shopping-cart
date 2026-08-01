@@ -2,13 +2,19 @@ import  Loading  from '../components/Loading'
 import  Error  from '../components/Error'
 import UseFetchProducts from '../hooks/UseFetchProducts'
 import ProductCard from '../components/ProductCard'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 const Shop = () => {
+  const searchInputRef = useRef(null);
+  const [searchTerm, setSearchTerm] = useState("");
   const { products, loading, error } = UseFetchProducts();
   const [showMessage, setShowMessage] = useState(false);
   const [sortOption, setSortOption] = useState("default");
   const [selectedCategory, setSelectedCategory] = useState("all");
+
+  useEffect(() => {
+    searchInputRef.current.focus();
+  }, []);
 
   function showSuccessMessage() {
     setShowMessage(true);
