@@ -6,9 +6,9 @@ const Navbar = () => {
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-md">
+    <header className="sticky top-0 z-50 bg-white/95 border-b border-gray-200 backdrop-blur">
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        <h1 className="text-2xl font-bold text-blue-600">
+        <h1 className="text-3xl font-bold text-blue-600 tracking-tight cursor-pointer">
           ShopCart
         </h1>
 
