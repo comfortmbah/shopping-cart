@@ -1,4 +1,4 @@
-import { getProducts } from "../src/data/products.js";
+import { getProducts } from "../data/products.js";
 
 export const GetProductsList = (req, res) => {
   const products = getProducts();
