@@ -1,6 +1,6 @@
 import { getProducts } from "../data/products.js";
 
-export const GetProductsList = (req, res) => {
+export const getProductsList = (req, res) => {
   const products = getProducts();
   res.json(products);
 }
