@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { getProducts } from '../api/productsApi';
 
 const UseFetchProducts = () => {
   const [products, setProducts] = useState([]);
@@ -8,13 +9,7 @@ const UseFetchProducts = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/products");
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch products");
-        } 
-
-        const data = await response.json();
+        const data = await getProducts();
         setProducts(data);
       } catch (err) {
         setError(err.message)
