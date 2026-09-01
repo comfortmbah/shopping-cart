@@ -10,3 +10,14 @@ export const getProducts = async () => {
   const products = await response.json();
   return products;
 } 
+
+export const getProductById = async (id) => {
+  const response = await fetch(`${API_URL}/products/${id}`);
+  
+  if (!response.ok) {
+    throw new Error("Failed to fetch products");
+  }
+
+  const products = await response.json();
+  return products;
+}

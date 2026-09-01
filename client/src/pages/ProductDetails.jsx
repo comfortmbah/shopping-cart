@@ -1,18 +1,34 @@
 import { useParams } from "react-router-dom"
-import UseFetchProducts from "../hooks/UseFetchProducts"
+import { useState, useEffect } from "react"
 import Loading from "../components/Loading"
 import Error from "../components/Error"
 import { useCart } from "../context/CartContext"
+import { getProductById } from "../api/productsApi"
 
 const ProductDetails = () => {
+  const [product, setProduct] = useState(null); 
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null);
+
   const { addToCart } = useCart();
   const { id } = useParams();
-  const { products, loading, error } = UseFetchProducts();
+  
+  useEffect(() => { 
+    const fetchProduct = async () => { 
+      try { 
+        const data = await getProductById(id); 
+        setProduct(data); 
+      } catch (err) { 
+        setError(err.message); 
+      } finally { 
+        setLoading(false); 
+      } 
+    }; 
+    fetchProduct(); 
+  }, [id]);
 
   if (loading) return <Loading />
   if (error) return <Error message={error} />
-
-  const product = products.find((item) => item.id === Number(id))
 
   if (!product) {
     return <Error message={'Product not found.'} />
